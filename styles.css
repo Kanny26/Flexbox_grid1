@@ -5,52 +5,131 @@
 }
 
 :root{
-  --color-body: #8c6363;
-  --color-header: #63638c; 
-  --color-aside: #63a86c;
-  --color-main: #8c8c63;
-  --color-footer: #1b7b8b;
+  /*Backgrounds*/
+
+  --color-body: #948181;
+  --color-header: #7c7567; 
+  --color-aside: #728a75;
+  --color-main: #a0a087;
+  --color-footer: #65797c;
+  --color-cards: #aa978c;
+
+  /*Anchos - altos*/
   --width_header: 2000px;
-  --height-header: 200px;
+  --height-header: 150px;
   --width_aside: 200px;
-  --height-aside: 500px;
+  --height-aside: 711px;
   --width_main: 1700px;
-  --height-main: 500px;
+  --height-main: 711px;
   --width_footer: 2000px;
   --height-footer: 50px;
+
+  --width-cards: 500px;
+  --heigh-cards: 150px;
+
+  --width-img-card: 500px;
+  --heigh-img-card: 100px;
 
 }
 
 body{
   background-color: var(--color-body);
-  display: flex;
-  flex-wrap: wrap;
-
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr;
+  grid-template-rows: 100px auto 100px;
+  grid-template-areas:
+  "header header header"
+  "aside main main"
+  "footer footer footer";
+  height: 100vh;
 }
 
 header{
-  width: var(--width_header);
-  height: var(--height-header);
   background-color: var(--color-header);
+  grid-area: header;
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+header div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: 20px;
+}
+
+header div img{
+  height: 100px;
+  width: 100px;
+}
+
+header div nav ul{
+  display: flex;
+  margin: 10px;
+  gap: 10px;
+  font-size: 20px;
+}
+
+header div nav ul li{
+  list-style: none;
+  padding: 25px;
 }
 
 aside{
-  width: var(--width_aside);
+  grid-area: aside;
   height: var(--height-aside);
   background-color: var(--color-aside);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  text-align: justify;
+}
 
+aside h2 {
+  padding: 10px;
 }
 
 main{
-  width: var(--width_main);
   height: var(--height-main);
+  grid-area: main;
   background-color: var(--color-main);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 20px 1fr 1fr;
+   grid-template-areas:
+  "titulo titulo"
+
 }
 
+main h2{
+  text-align: center;
+  grid-area: titulo;
+  margin: 20px;
+}
+
+main div {
+  background-color: var(--color-cards);
+  height: var(--heigh-cards);
+  width: var(--width-cards);
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 50px;
+  
+}
+
+main div img {
+  width: var(--width-img-card);
+  height: var(--heigh-img-card);
+  border-radius: 10px;
+  
+}
+
+
 footer{
-  width: var(--width_footer);
-  height: var(--height-footer);
   background-color: var(--color-footer);
+  grid-area: footer;
 }
