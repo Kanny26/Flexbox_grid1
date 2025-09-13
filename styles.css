@@ -14,21 +14,14 @@
   --color-footer: #65797c;
   --color-cards: #aa978c;
 
-  /*Anchos - altos*/
-  --width_header: 2000px;
-  --height-header: 150px;
-  --width_aside: 200px;
-  --height-aside: 711px;
-  --width_main: 1700px;
-  --height-main: 711px;
-  --width_footer: 2000px;
-  --height-footer: 50px;
-
   --width-cards: 500px;
-  --heigh-cards: 150px;
+  --heigh-cards: 200px;
 
-  --width-img-card: 500px;
-  --heigh-img-card: 100px;
+  --width-img-card: 250px;
+  --heigh-img-card: 200px;
+
+  --width-img-footer: 50px;
+  --heigh-img-footer: 50px;
 
 }
 
@@ -47,43 +40,37 @@ body{
 header{
   background-color: var(--color-header);
   grid-area: header;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 120px 1fr;
   align-items: center;
+  padding: 0 20px;
 }
 
-header div {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-left: 20px;
-}
-
-header div img{
+header img{
   height: 100px;
   width: 100px;
 }
 
-header div nav ul{
-  display: flex;
-  margin: 10px;
+header  nav ul{
+  display: grid;
+  grid-auto-flow: column;
   gap: 10px;
+  justify-content: end;
   font-size: 20px;
+  list-style: none;
 }
 
-header div nav ul li{
-  list-style: none;
+header nav ul li{
+  /* list-style: none; */
   padding: 25px;
 }
 
 aside{
   grid-area: aside;
-  height: var(--height-aside);
+  /* height: var(--height-aside); */
   background-color: var(--color-aside);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  place-items: center;
   padding: 10px;
   text-align: justify;
 }
@@ -93,43 +80,82 @@ aside h2 {
 }
 
 main{
-  height: var(--height-main);
+  /* height: var(--height-main); */
   grid-area: main;
   background-color: var(--color-main);
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 20px 1fr 1fr;
-   grid-template-areas:
-  "titulo titulo"
-
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto repeat(3, 1fr);
+  grid-template-areas:
+  "titulo titulo titulo"
+  "card1 card2 card3"
+  "card4 card5 card6";
+  justify-items: center;
+  gap: 20px;
 }
 
-main h2{
-  text-align: center;
+main > h2{
   grid-area: titulo;
+  text-align: center;
   margin: 20px;
 }
 
-main div {
+main > div {
   background-color: var(--color-cards);
   height: var(--heigh-cards);
   width: var(--width-cards);
-  display: flex;
-  justify-content: start;
+  display: grid;
+  grid-template-columns: var(--width-img-card) 1fr;
+  border-radius: 10px;
+  overflow: hidden;
   align-items: center;
-  margin: 50px;
-  
 }
 
-main div img {
+main > div img {
   width: var(--width-img-card);
   height: var(--heigh-img-card);
-  border-radius: 10px;
-  
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
+main > div h2{
+  padding: 10px;
+  font-size: 18px;
+  text-align: center;
+}
 
 footer{
   background-color: var(--color-footer);
   grid-area: footer;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  text-align: center;
+  gap: 20px;
+}
+
+footer div:nth-of-type(1) {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 15px;
+  align-items: center;
+}
+
+footer div:nth-of-type(1) img {
+
+  width: var(--width-img-footer);
+  height: var(--heigh-img-footer);
+  padding: 5px;
+  transition: transform 0.3s ease;
+}
+
+footer div:nth-of-type(2){
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 20px;
+  align-items: center;
+}
+
+footer div:nth-of-type(2) h3 {
+  font-size: 18px;
 }
